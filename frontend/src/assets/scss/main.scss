@@ -1,0 +1,69 @@
+@import "./colors.scss";
+@import "./grid.scss";
+@import "./nav.scss";
+@import "./views.scss";
+@import "./components.scss";
+
+::-webkit-scrollbar {
+  width: 16px;
+}
+
+::-webkit-scrollbar-track {
+  background: #4c4360;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #393248;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #433b54;
+}
+
+html,
+body,
+#app,
+#site {
+  width: 100%;
+  height: 100%;
+
+  margin: 0px;
+
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  color: white;
+}
+
+#site {
+  background-color: $site;
+
+  .content {
+    .inner {
+      background-color: $content;
+      border-radius: 4px;
+
+      width: 85%;
+      height: 85%;
+    }
+
+    float: right;
+
+    width: 80%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.alert {
+  padding: 16px 32px;
+  background-color: $alert;
+
+  text-align: center;
+
+  margin: 32px 0;
+  border-radius: 8px;
+}

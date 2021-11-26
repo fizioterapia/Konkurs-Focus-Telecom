@@ -1,0 +1,8 @@
+#1 Jak to działa
+Ty podajesz numer a my dzwonimy!
+#2 Czy to jest zgodne z RODO?
+Oczywiście! Nie przechowujemy żadnych waszych numerów oraz danych osobowych.
+#3 Ciekawe, a w czym jest stworzona ta strona?
+Za pomocą technologii Vue.js, Vuex, express, socket.io.
+#4 Linie nieparzyste to nagłówki.
+A linie parzyste to odpowiedzi!

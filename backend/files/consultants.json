@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "name": "Cameron",
+    "gender": "male",
+    "picture": "https://randomuser.me/api/portraits/men/31.jpg"
+  },
+  {
+    "id": 2,
+    "name": "Gerry",
+    "gender": "male",
+    "picture": "https://randomuser.me/api/portraits/men/27.jpg"
+  },
+  {
+    "id": 3,
+    "name": "Caitlin",
+    "gender": "female",
+    "picture": "https://randomuser.me/api/portraits/women/67.jpg"
+  },
+  {
+    "id": 4,
+    "name": "Tammy",
+    "gender": "female",
+    "picture": "https://randomuser.me/api/portraits/women/94.jpg"
+  },
+  {
+    "id": 5,
+    "name": "Heidi",
+    "gender": "female",
+    "picture": "https://randomuser.me/api/portraits/women/80.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Samantha",
+    "gender": "female",
+    "picture": "https://randomuser.me/api/portraits/women/40.jpg"
+  },
+  {
+    "id": 7,
+    "name": "Gavin",
+    "gender": "male",
+    "picture": "https://randomuser.me/api/portraits/men/82.jpg"
+  },
+  {
+    "id": 8,
+    "name": "Chloe",
+    "gender": "female",
+    "picture": "https://randomuser.me/api/portraits/women/34.jpg"
+  }
+]

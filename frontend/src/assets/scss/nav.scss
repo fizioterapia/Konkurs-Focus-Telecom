@@ -1,0 +1,62 @@
+nav {
+  background-color: $nav;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  flex-direction: column;
+
+  float: left;
+
+  width: 20%;
+  height: 100%;
+
+  .nav-header {
+    font-size: 1.25em;
+    text-align: center;
+
+    margin-bottom: 32px;
+
+    h1,
+    p {
+      margin: 0;
+    }
+
+    p {
+      font-size: 0.8em;
+    }
+
+    color: white;
+  }
+
+  a {
+    width: 70%;
+
+    text-align: center;
+
+    padding: 24px 16px;
+    background: $link;
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    letter-spacing: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    transition: 0.3s all ease-in-out;
+
+    margin-bottom: 16px;
+  }
+
+  a:hover {
+    background-color: $linkactive;
+  }
+
+  a.router-link-active {
+    background-color: $linkactive;
+  }
+}
