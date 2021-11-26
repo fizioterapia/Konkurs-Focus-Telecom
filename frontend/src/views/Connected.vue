@@ -7,7 +7,7 @@
       :alt="consultant.name"
     />
     <div class="consultant">Obsługuje ciebie dziś, {{ consultant.name }}.</div>
-    <div class="timer">{{ time }}</div>
+    <div class="timer">{{ callTime }}</div>
   </div>
 </template>
 

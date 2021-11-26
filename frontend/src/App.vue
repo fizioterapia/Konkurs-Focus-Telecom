@@ -25,12 +25,12 @@
 <script>
 export default {
   mounted() {
-    this.$store.commit('readData')
+    this.$store.commit("readData");
   },
-}
+};
 </script>
 
 <style lang="scss">
-  @import "./assets/scss/main.scss";
-  @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
+@import "./assets/scss/main.scss";
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap");
 </style>

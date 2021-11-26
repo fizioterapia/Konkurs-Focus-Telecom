@@ -99,17 +99,6 @@ app.get("/faq", async (req, res) => {
   res.json(lines);
 });
 
-app.get("/status/:callId", (req, res) => {
-  let calls = connections.filter((elem) => {
-    if (elem.id == req.params.callId) return true;
-  });
-
-  res.json({
-    id: req.params.callId,
-    status: calls.length > 0 ? calls[0].status : "FAILED",
-  });
-});
-
 let interval = setInterval(async () => {
   connections.forEach(async (element, index) => {
     let status = null;
@@ -147,6 +136,18 @@ let interval = setInterval(async () => {
   });
 
   connections = connections.filter((elem) => {
-    if (elem.called + 30000 > new Date().getTime()) return true;
+    if (elem.called + 5000 > new Date().getTime()) return true;
   });
 }, 1000);
+
+/*
+app.get("/status/:callId", (req, res) => {
+  let calls = connections.filter((elem) => {
+    if (elem.id == req.params.callId) return true;
+  });
+
+  res.json({
+    id: req.params.callId,
+    status: calls.length > 0 ? calls[0].status : "FAILED",
+  });
+});*/

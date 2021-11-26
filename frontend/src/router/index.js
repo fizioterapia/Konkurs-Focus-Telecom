@@ -9,12 +9,12 @@ import Consultants from "../views/Consultants.vue";
 import FAQ from "../views/FAQ.vue";
 
 const validator = (to, from, next) => {
-    if (!to.params.status) {
-      next({name: 'start'});
-    } else {
-      next();
-    }
-}
+  if (!to.params.status) {
+    next({ name: "start" });
+  } else {
+    next();
+  }
+};
 
 const routes = [
   {
@@ -27,26 +27,26 @@ const routes = [
     name: "ringing",
     component: Ringing,
     props: true,
-    beforeEnter: validator
+    beforeEnter: validator,
   },
   {
     path: "/connected",
     name: "connected",
     component: Connected,
     props: true,
-    beforeEnter: validator
+    beforeEnter: validator,
   },
   {
     path: "/answered",
     name: "answered",
     component: Answered,
-    beforeEnter: validator
+    beforeEnter: validator,
   },
   {
     path: "/failed",
     name: "failed",
     component: Failed,
-    beforeEnter: validator
+    beforeEnter: validator,
   },
   {
     path: "/calls",
