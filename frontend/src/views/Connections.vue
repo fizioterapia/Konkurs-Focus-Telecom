@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="center" v-else>
-      <span class="alert"> Brak połączeń :V </span>
+      <span class="alert">Brak połączeń</span>
     </div>
   </div>
 </template>

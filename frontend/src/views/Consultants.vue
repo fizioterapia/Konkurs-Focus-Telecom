@@ -7,7 +7,7 @@
       </div>
     </div>
     <div class="center" v-else>
-      <span class="alert"> Brak konsultantów :V </span>
+      <span class="alert"> Brak konsultantów </span>
     </div>
   </div>
 </template>
