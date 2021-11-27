@@ -135,12 +135,14 @@ let interval = setInterval(async () => {
     }
   });
 
+  // TODO: Find better implementation, to always close polling from socket.
   connections = connections.filter((elem) => {
     if (elem.called + 5000 > new Date().getTime()) return true;
   });
 }, 1000);
 
 /*
+-- One of above workarounds
 app.get("/status/:callId", (req, res) => {
   let calls = connections.filter((elem) => {
     if (elem.id == req.params.callId) return true;
