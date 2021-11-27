@@ -1,4 +1,5 @@
 # Konkurs Focus Telecom
+Autor: Tomasz Gradek
 
 **Instalacja:**
 
