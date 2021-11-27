@@ -1,12 +1,12 @@
-// libraries
+// Libraries
 const fs = require("fs");
 const dialer = require("dialer").Dialer;
 const express = require("express");
 const { Server } = require("socket.io");
 const bodyParser = require("body-parser");
 
-// variables
-// if config/auth.json is missing then use fake api
+// Variables
+// If './config/auth.json' doesn't exist, then we're using Fake API.
 let configuration;
 try {
   configuration = require("./config/auth.json");
@@ -33,9 +33,10 @@ let _bridge = null;
 let currentConnection = db.lastID;
 let connections = [];
 
-// configuration
+// Configuration
 dialer.configure(configuration.call);
 
+// Backend
 const app = express();
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
@@ -46,7 +47,6 @@ app.use((req, res, next) => {
 app.use(bodyParser.text());
 app.use(bodyParser.json());
 
-// webserver and sockets
 const server = app.listen(3000, function () {
   console.log(`Application is running on port ${server.address().port}`);
 });
@@ -71,7 +71,7 @@ app.post("/call", async function (req, res) {
 
   connections.push({
     id: id,
-    date: new Date().getTime(),
+    lastUpdate: new Date().getTime(),
     status: null,
     bridge: _bridge,
     called: new Date().getTime(),
@@ -104,6 +104,7 @@ let interval = setInterval(async () => {
     let status = null;
 
     if (!element.bridge) {
+      // In case of entering wrong number, drop connection.
       status = "FAILED";
     } else {
       status = await element.bridge
@@ -111,10 +112,11 @@ let interval = setInterval(async () => {
         .catch(() => (element.status = "FAILED"));
     }
 
-    console.log(status);
+    console.log(`Connection ID: ${element.id} > Status: ${element.status}`);
 
     if (element.status !== status) {
       element.status = status;
+      element.lastUpdate = new Date().getTime();
       socket.emit(`status${element.id}`, status);
     }
 
@@ -136,8 +138,16 @@ let interval = setInterval(async () => {
   });
 
   // TODO: Find better implementation, to always close polling from socket.
+  // After 5 seconds, drop all socket connections which were finished.
   connections = connections.filter((elem) => {
-    if (elem.called + 5000 > new Date().getTime()) return true;
+    if (
+      elem.lastUpdate + 5000 > new Date().getTime() ||
+      (elem.status !== "ANSWERED" &&
+        elem.status !== "FAILED" &&
+        elem.status !== "BUSY" &&
+        elem.status !== "NO ANSWER")
+    )
+      return true;
   });
 }, 1000);
 
