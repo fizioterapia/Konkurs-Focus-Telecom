@@ -1,3 +1,4 @@
-auth.json
+backend/config/auth.json
+backend/files/data.json
 node_modules/
 *.bak
