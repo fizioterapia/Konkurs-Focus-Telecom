@@ -48,7 +48,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 const server = app.listen(3000, function () {
-  console.log(`Application is running on port ${server.address().port}`);
+  console.log(`App is running on port ${server.address().port}`);
 });
 const socket = new Server(server);
 
