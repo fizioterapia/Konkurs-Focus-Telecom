@@ -10,9 +10,10 @@ import ViewManager from "../services/ViewManager";
 export default {
   props: {
     callsId: String,
+    consultant: String,
   },
   mounted() {
-    ViewManager.checkStatus(this.callsId);
+    ViewManager.checkStatus(this.callsId, this.consultant);
   },
 };
 </script>

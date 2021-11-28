@@ -3,33 +3,34 @@
     <div class="header">Trwa połączenie...</div>
     <img
       class="consultant-image"
-      :src="consultant.picture"
-      :alt="consultant.name"
+      :src="consultantObj.picture"
+      :alt="consultantObj.name"
     />
-    <div class="consultant">Obsługuje ciebie dziś, {{ consultant.name }}.</div>
+    <div class="consultant">
+      Obsługuje ciebie dziś, {{ consultantObj.name }}.
+    </div>
     <div class="timer">{{ callTime }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  async mounted() {
-    let data = await fetch("http://localhost:3000/consultants", {
-      method: "GET",
-    });
-    data = await data.json();
-    this.consultant = data[Math.floor(Math.random() * data.length)];
-
-    this.interval = setInterval(() => {
-      this.callTime++;
-    }, 1000);
+  props: {
+    consultant: String,
   },
   data() {
     return {
       callTime: 0,
       interval: null,
-      consultant: {},
+      consultantObj: {},
     };
+  },
+  async mounted() {
+    this.consultantObj = JSON.parse(this.consultant);
+
+    this.interval = setInterval(() => {
+      this.callTime++;
+    }, 1000);
   },
   unmounted() {
     clearInterval(this.interval);
@@ -37,7 +38,7 @@ export default {
     this.$store.commit("saveConnection", {
       time: this.callTime,
       status: "ANSWERED",
-      consultant: this.consultant,
+      consultant: this.consultantObj,
     });
   },
 };

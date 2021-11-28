@@ -55,7 +55,11 @@ export default {
       let response = await responseStream.json();
       this.$router.push({
         name: "ringing",
-        params: { status: "ringing", callsId: response.id },
+        params: {
+          status: "ringing",
+          callsId: response.id,
+          consultant: JSON.stringify(response.consultant),
+        },
       });
     },
   },

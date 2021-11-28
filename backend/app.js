@@ -54,6 +54,7 @@ const socket = new Server(server);
 
 app.post("/call", async function (req, res) {
   let status = null;
+  let consultant = consultants[Math.floor(Math.random() * consultants.length)];
   currentConnection++;
   let id = currentConnection;
   let data = req.body;
@@ -67,6 +68,7 @@ app.post("/call", async function (req, res) {
   res.json({
     id: id,
     status: status === null ? _bridge.STATUSES.NEW : status,
+    consultant: consultant,
   });
 
   connections.push({
@@ -75,6 +77,7 @@ app.post("/call", async function (req, res) {
     status: null,
     bridge: _bridge,
     called: new Date().getTime(),
+    consultant: consultant,
   });
 });
 
@@ -112,13 +115,13 @@ let interval = setInterval(async () => {
         .catch(() => (element.status = "FAILED"));
     }
 
-    console.log(`Connection ID: ${element.id} > Status: ${element.status}`);
-
     if (element.status !== status) {
       element.status = status;
       element.lastUpdate = new Date().getTime();
       socket.emit(`status${element.id}`, status);
     }
+
+    console.log(`Connection ID: ${element.id} > Status: ${element.status}`);
 
     if (
       element.status === "ANSWERED" ||

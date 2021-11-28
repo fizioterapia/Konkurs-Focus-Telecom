@@ -5,7 +5,8 @@ class ViewManager {
   constructor() {
     this.socket = null;
     this.status = null;
-    this.id = "";
+    this.id = null;
+    this.consultant = null;
   }
 
   changeView() {
@@ -13,24 +14,37 @@ class ViewManager {
       case "CONNECTED":
         router.push({
           name: "connected",
-          params: { status: "connected", callsId: this.id },
+          params: {
+            status: "connected",
+            callsId: this.id,
+            consultant: this.consultant,
+          },
         });
         break;
       case "FAILED":
         router.push({
           name: "failed",
-          params: { status: "failed", callsId: this.id },
+          params: {
+            status: "failed",
+            callsId: this.id,
+            consultant: this.consultant,
+          },
         });
         break;
       case "ANSWERED":
         router.push({
           name: "answered",
-          params: { status: "answered", callsId: this.id },
+          params: {
+            status: "answered",
+            callsId: this.id,
+            consultant: this.consultant,
+          },
         });
     }
   }
-  checkStatus(id) {
+  checkStatus(id, consultant) {
     this.id = id;
+    this.consultant = consultant;
 
     this.socket = io("http://localhost:3000", {
       reconnection: false,
