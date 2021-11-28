@@ -11,7 +11,7 @@ export default createStore({
       }
     },
     saveConnection(connections, data) {
-      this.state.connections.push({
+      this.state.connections.unshift({
         id: this.state.connections.length + 1,
         time: data.time,
         status: data.status,
